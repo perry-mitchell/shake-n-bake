@@ -15,7 +15,6 @@
 
 		processElement: function(rootElement, callback) {
 			var newScripts = [];
-			callback = callback || __NOOPfn;
 			Array.prototype.slice.call(rootElement.getElementsByTagName("script"))
 				.forEach(function(scriptEl) {
 					var newScript = document.createElement("script");
