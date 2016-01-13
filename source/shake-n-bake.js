@@ -14,10 +14,12 @@
 		processElement: function(rootElement) {
 			var newScripts = [];
 			Array.prototype.slice.call(rootElement.getElementsByTagName("script"))
+				.filter(function(scriptEl) {
+					return !scriptEl.getAttribute("src");
+				})
 				.forEach(function(scriptEl) {
 					var newScript = document.createElement("script");
 					newScript.type = "text/javascript";
-					//newScript.setAttribute("baked", "baked");
 					newScript.innerHTML = scriptEl.innerHTML;
 					scriptEl.parentNode.insertBefore(newScript, scriptEl.nextSibling);
 					scriptEl.parentNode.removeChild(scriptEl);

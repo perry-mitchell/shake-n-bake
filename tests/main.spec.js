@@ -23,11 +23,12 @@ describe("Shake-N-Bake", function() {
 		code = '<div>\n' +
 			'<div>\n' +
 			'<script type="text/javascript">window.testExecution();</script>\n' +
+			'<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>\n'
 			'</div>\n' +
 			'</div>';
 		rootElement.innerHTML = code;
 
-		setTimeout(done, 125);
+		setTimeout(done, 350);
 	});
 
 	describe("environment without execution", function() {
@@ -46,6 +47,10 @@ describe("Shake-N-Bake", function() {
 			};
 			expect(fn).not.toThrow();
 			expect(calledTimes).toBe(1);
+		});
+
+		it("does not execute scripts with a 'src'", function() {
+			expect(window.jQuery).not.toBeDefined();
 		});
 
 	});
