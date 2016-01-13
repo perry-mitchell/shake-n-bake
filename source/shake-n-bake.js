@@ -9,11 +9,9 @@
 
 	"use strict";
 
-	var __NOOPfn = function() {};
-
 	return {
 
-		processElement: function(rootElement, callback) {
+		processElement: function(rootElement) {
 			var newScripts = [];
 			Array.prototype.slice.call(rootElement.getElementsByTagName("script"))
 				.forEach(function(scriptEl) {
